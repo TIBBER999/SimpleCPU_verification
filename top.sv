@@ -1,6 +1,4 @@
 import cpu_pkg::*;
-import uvm_pkg::*;
-`include "uvm_macros.svh"
 
 module top;
     cpu_bfm  bfm();
@@ -18,13 +16,11 @@ module top;
         .w     (bfm.w)
     );
 
-   // testbench testbench_h;
+    testbench testbench_h;
 
     initial begin
-        uvm_config_db #(virtual interface cpu_bfm)::set(null, "*", "bfm", bfm);
-        run_test();
-        //testbench_h = new(bfm);
-        //testbench_h.execute();
+        testbench_h = new(bfm);
+        testbench_h.execute();
     end
 
 endmodule : top
